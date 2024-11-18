@@ -35,7 +35,7 @@ invoice-system/
 ### 1. Clone the Repository
 
 ```bash
-cd invoice-management
+cd invoice-system
 ```
 
 ---
@@ -196,6 +196,54 @@ The server will start at **http://localhost:8080**.
 ```json
 {
     "message": "Invoice deleted"
+}
+```
+
+---
+
+#### 4. Edit an Invoice
+**Request**: `PUT /api/invoices/:id`  
+**Request Body**:
+```json
+{
+    "invoice_id": "INV-001",
+    "issue_date": "2024-01-01",
+    "due_date": "2024-01-31",
+    "subject": "Spring Marketing Campaign",
+    "from_company": "Discovery Designs",
+    "from_address": "41 St Vincent Place, Glasgow, Scotland",
+    "to_company": "Barrington Publishers",
+    "to_address": "17 Great Suffolk Street, London, UK",
+    "subtotal": 10000.00,
+    "tax": 1000.00,
+    "total": 11000.00,
+    "status": "PAID",
+    "items": [
+        {
+            "item_type": "Service",
+            "description": "Design",
+            "quantity": 41.00,
+            "unit_price": 230.00,
+            "amount": 9430.00
+        }
+    ]
+}
+```
+
+**Response**:
+```json
+{
+    "id": 1,
+    "invoice_id": "INV-001",
+    "issue_date": "2024-01-01",
+    "due_date": "2024-01-31",
+    "subject": "Spring Marketing Campaign",
+    "from_company": "Discovery Designs",
+    "to_company": "Barrington Publishers",
+    "subtotal": 10000.00,
+    "tax": 1000.00,
+    "total": 11000.00,
+    "status": "PAID"
 }
 ```
 
